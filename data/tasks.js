@@ -134,7 +134,8 @@ export const TASKS = [
 
 /** 최종 답변이 과제의 expect를 모두 만족하는지 본다 */
 export function isCorrect(task, answer) {
-  const text = String(answer ?? "");
+  // GPT-OSS는 날짜·번호에 줄바꿈 없는 하이픈(U+2011)을 쓴다. 본 실행 중 T02가 이것 때문에 맞는 답도 실패로 잡혀서 모두 "-"로 맞춘다
+  const text = String(answer ?? "").replace(/[‐-―−﹣－]/g, "-");
   const loose = text.toLowerCase().replace(/\s+/g, " ");
   const digits = text.replace(/(?<=\d)[\s\-.]+(?=\d)/g, "");
   const hit = (alt) => {
