@@ -17,10 +17,13 @@ const CONDITIONS = [
   { key: "codemode-minimal", label: "Code Mode 최소 반환" },
   { key: "codemode-schema", label: "Code Mode 스키마" },
   { key: "codemode-both", label: "Code Mode 둘 다" },
+  { key: "codemode-peek", label: "Code Mode 구조 보기" },
   { key: "mcp-full", label: "MCP 전체 반환" },
   { key: "mcp-select", label: "MCP 필드 선택" },
 ];
-const CODEMODE = CONDITIONS.slice(0, 4);
+// 2×2는 앞의 네 조건이고, 구조 보기(peek)는 원인을 떼어 보려고 나중에 더한 조건이다
+const CODEMODE_2X2 = CONDITIONS.slice(0, 4);
+const CODEMODE = CONDITIONS.filter((c) => c.key.startsWith("codemode-"));
 const CHANNELS = [
   { key: "console", label: "탐색 출력 (console)", cls: "s1" },
   { key: "return", label: "반환값 (return)", cls: "s2" },
@@ -157,7 +160,7 @@ md.push("주효과는 해당 요인이 있는 두 조건의 평균에서 없는 
 md.push("| 모델 | 기본 | 최소 반환 | 스키마 | 둘 다 | 최소 반환 주효과 [95%] | 스키마 주효과 [95%] | 둘 다 감소율 | 성공률 (기본 → 둘 다) |");
 md.push("| --- | --- | --- | --- | --- | --- | --- | --- | --- |");
 for (const model of models) {
-  const cm = CODEMODE.map((c) => pick(model, c.key));
+  const cm = CODEMODE_2X2.map((c) => pick(model, c.key));
   if (cm.some((rows) => !rows.length)) continue;
   const [base, minimal, schema, both] = cm;
   const tasksMap = new Map();
@@ -182,6 +185,28 @@ for (const model of models) {
   summary.models[model].effects = effects;
   md.push(
     `| ${modelLabel(model)} | ${f1(u(base))} | ${f1(u(minimal))} | ${f1(u(schema))} | ${f1(u(both))} | ${f1(effects.minimal)} ${ci(effects.minimal_ci)} | ${f1(effects.schema)} ${ci(effects.schema_ci)} | ${pct(effects.both_reduction)} | ${pct(s(base))} → ${pct(s(both))} |`,
+  );
+}
+md.push("");
+
+// 후속 실험: 구조만 보는 통로(api.peek)를 주면 스키마 없이도 노출이 줄어드는가
+md.push("## 후속 실험. 구조만 보여 주면 노출이 줄어드는가", "");
+md.push("peek 조건은 스키마와 지시 없이, 값을 빼고 키 이름과 타입만 돌려주는 `api.peek()`만 더했다. peek 사용은 접근 기록의 peek 표시로 센다.", "");
+md.push("| 모델 | 기본 | 구조 보기 (peek) | 스키마 | peek을 쓴 실행 | 쓴 실행의 불필요 | 안 쓴 실행의 불필요 | 성공률 (peek) |");
+md.push("| --- | --- | --- | --- | --- | --- | --- | --- |");
+for (const model of models) {
+  const peekRows = pick(model, "codemode-peek");
+  if (!peekRows.length) continue;
+  const used = peekRows.filter((r) => r.record.access.some((a) => a.request.peek));
+  const unused = peekRows.filter((r) => !used.includes(r));
+  const u = (rows) => (rows.length ? f1(mean(rows.map((r) => r.s.unnecessary))) : "-");
+  summary.models[model].peek = {
+    used_rate: used.length / peekRows.length,
+    unnecessary_used: used.length ? mean(used.map((r) => r.s.unnecessary)) : null,
+    unnecessary_unused: unused.length ? mean(unused.map((r) => r.s.unnecessary)) : null,
+  };
+  md.push(
+    `| ${modelLabel(model)} | ${u(pick(model, "codemode-base"))} | **${u(peekRows)}** | ${u(pick(model, "codemode-schema"))} | ${pct(used.length / peekRows.length)} (${used.length}/${peekRows.length}) | ${u(used)} | ${u(unused)} | ${pct(mean(peekRows.map((r) => (r.correct ? 1 : 0))))} |`,
   );
 }
 md.push("");
