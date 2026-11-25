@@ -55,6 +55,16 @@ test("레코드 전체를 출력하면 라벨 붙은 필드가 모두 잡힌다"
   assert.ok(refsIn(JSON.stringify(mail)).includes("mails/M002/embedded.bank_account"));
 });
 
+test("메일 본문 속 건강 정보는 민감으로 센다", () => {
+  for (const i of [2, 8]) {
+    const { embedded, ...mail } = MAILS[i];
+    const found = [...findValues(index, JSON.stringify(mail))].map((k) => index.get(k));
+    const health = found.find((e) => e.refs[0].endsWith("/embedded.health"));
+    assert.ok(health, `${mail.id} 본문의 건강 정보를 찾지 못함`);
+    assert.equal(health.label, "sensitive");
+  }
+});
+
 test("불필요 노출은 처음 나온 경로에만 넣는다", () => {
   const task = { needs: ["customers/C003/email"] };
   const record = {
