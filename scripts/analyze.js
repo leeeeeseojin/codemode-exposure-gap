@@ -211,6 +211,26 @@ for (const model of models) {
 }
 md.push("");
 
+// peek 효과가 과제마다 크게 갈려서 과제 종류로 나눠 본다.
+// 단건 조회는 ID를 주고 레코드 하나를 묻는 과제, 나머지는 목록을 거르거나 집계해야 하는 과제다
+const SINGLE_RECORD = new Set(["T01", "T02", "T05", "T06", "T07", "T13", "T15", "T17"]);
+md.push("### 과제 종류별 (단건 조회 8개 / 목록·집계 12개)", "");
+md.push("| 모델 | 과제 종류 | 기본 | 구조 보기 (peek) | 스키마 | peek을 쓴 실행 |");
+md.push("| --- | --- | --- | --- | --- | --- |");
+for (const model of models) {
+  if (!pick(model, "codemode-peek").length) continue;
+  summary.models[model].peek_by_kind = {};
+  for (const [kind, inKind] of [["단건 조회", (t) => SINGLE_RECORD.has(t)], ["목록·집계", (t) => !SINGLE_RECORD.has(t)]]) {
+    const cell = (cond) => pick(model, cond).filter((r) => inKind(r.task));
+    const u = (rows) => mean(rows.map((r) => r.s.unnecessary));
+    const peekRows = cell("codemode-peek");
+    const usedRate = mean(peekRows.map((r) => (r.record.access.some((a) => a.request.peek) ? 1 : 0)));
+    summary.models[model].peek_by_kind[kind] = { base: u(cell("codemode-base")), peek: u(peekRows), schema: u(cell("codemode-schema")), used_rate: usedRate };
+    md.push(`| ${modelLabel(model)} | ${kind} | ${f1(u(cell("codemode-base")))} | ${f1(u(peekRows))} | ${f1(u(cell("codemode-schema")))} | ${pct(usedRate)} |`);
+  }
+}
+md.push("");
+
 // 과제별 표: 어떤 과제에서 새는지
 md.push("## 과제별 불필요 노출 (Code Mode, 과제당 평균)", "");
 for (const model of models) {
