@@ -1,0 +1,309 @@
+{
+  "generated_from": 720,
+  "excluded_api_errors": 0,
+  "models": {
+    "anthropic/claude-haiku-5.5": {
+      "conditions": {
+        "codemode-base": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 23.45,
+          "exposed": 18.95,
+          "unnecessary": 18.4,
+          "unnecessary_ci": [
+            11.283333333333333,
+            26.233333333333334
+          ],
+          "sensitive": 3.5166666666666666,
+          "any_unnecessary": 1,
+          "exposed_over_accessed": 0.8081023454157783,
+          "max_turns": 0,
+          "cost": 0.050635999999999994
+        },
+        "codemode-minimal": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 22.416666666666668,
+          "exposed": 0.7833333333333333,
+          "unnecessary": 0.23333333333333334,
+          "unnecessary_ci": [
+            0,
+            0.5333333333333333
+          ],
+          "sensitive": 0,
+          "any_unnecessary": 0.13333333333333333,
+          "exposed_over_accessed": 0.03494423791821561,
+          "max_turns": 0,
+          "cost": 0.06627250000000001
+        },
+        "codemode-schema": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 28.533333333333335,
+          "exposed": 2.033333333333333,
+          "unnecessary": 1.4833333333333334,
+          "unnecessary_ci": [
+            0.5833333333333334,
+            2.816666666666667
+          ],
+          "sensitive": 0.1,
+          "any_unnecessary": 0.5333333333333333,
+          "exposed_over_accessed": 0.07126168224299065,
+          "max_turns": 0,
+          "cost": 0.026019199999999992
+        },
+        "codemode-both": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 29.45,
+          "exposed": 0.8,
+          "unnecessary": 0.25,
+          "unnecessary_ci": [
+            0.016666666666666666,
+            0.6333333333333333
+          ],
+          "sensitive": 0,
+          "any_unnecessary": 0.15,
+          "exposed_over_accessed": 0.027164685908319185,
+          "max_turns": 0,
+          "cost": 0.028741299999999997
+        },
+        "mcp-full": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 21.633333333333333,
+          "exposed": 21.633333333333333,
+          "unnecessary": 21.083333333333332,
+          "unnecessary_ci": [
+            12.6,
+            30.6
+          ],
+          "sensitive": 4.066666666666666,
+          "any_unnecessary": 1,
+          "exposed_over_accessed": 1,
+          "max_turns": 0,
+          "cost": 0.0272436
+        },
+        "mcp-select": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 22.416666666666668,
+          "exposed": 3.0833333333333335,
+          "unnecessary": 2.533333333333333,
+          "unnecessary_ci": [
+            0.6833333333333333,
+            4.933333333333334
+          ],
+          "sensitive": 0,
+          "any_unnecessary": 0.43333333333333335,
+          "exposed_over_accessed": 0.137546468401487,
+          "max_turns": 0,
+          "cost": 0.03051390000000001
+        }
+      },
+      "channels": {
+        "codemode-base": {
+          "total": 1104,
+          "share": {
+            "console": 0.1693840579710145,
+            "return": 0.8306159420289855,
+            "error": 0
+          },
+          "sensitive_console": 0.17535545023696683
+        },
+        "codemode-minimal": {
+          "total": 14,
+          "share": {
+            "console": 0.21428571428571427,
+            "return": 0.7857142857142857,
+            "error": 0
+          },
+          "sensitive_console": 0
+        },
+        "codemode-schema": {
+          "total": 89,
+          "share": {
+            "console": 0.02247191011235955,
+            "return": 0.9775280898876404,
+            "error": 0
+          },
+          "sensitive_console": 0
+        },
+        "codemode-both": {
+          "total": 15,
+          "share": {
+            "console": 0,
+            "return": 1,
+            "error": 0
+          },
+          "sensitive_console": 0
+        }
+      },
+      "effects": {
+        "minimal": -9.7,
+        "minimal_ci": [
+          -13.65,
+          -6
+        ],
+        "schema": -8.45,
+        "schema_ci": [
+          -12.408333333333333,
+          -4.841666666666667
+        ],
+        "both_reduction": 0.9864130434782609
+      }
+    },
+    "openai/gpt-oss-120b": {
+      "conditions": {
+        "codemode-base": {
+          "runs": 60,
+          "success": 0.9833333333333333,
+          "accessed": 23.3,
+          "exposed": 20.783333333333335,
+          "unnecessary": 20.233333333333334,
+          "unnecessary_ci": [
+            12.5,
+            28.533333333333335
+          ],
+          "sensitive": 3.7666666666666666,
+          "any_unnecessary": 0.9666666666666667,
+          "exposed_over_accessed": 0.8919885550786838,
+          "max_turns": 0,
+          "cost": 0.03868010899999998
+        },
+        "codemode-minimal": {
+          "runs": 60,
+          "success": 0.8666666666666667,
+          "accessed": 20.283333333333335,
+          "exposed": 16.95,
+          "unnecessary": 16.433333333333334,
+          "unnecessary_ci": [
+            7.833333333333333,
+            26.666666666666668
+          ],
+          "sensitive": 3.2333333333333334,
+          "any_unnecessary": 0.65,
+          "exposed_over_accessed": 0.8356614626129828,
+          "max_turns": 0,
+          "cost": 0.038651262
+        },
+        "codemode-schema": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 24.6,
+          "exposed": 1.95,
+          "unnecessary": 1.4,
+          "unnecessary_ci": [
+            0.38333333333333336,
+            2.8
+          ],
+          "sensitive": 0.31666666666666665,
+          "any_unnecessary": 0.16666666666666666,
+          "exposed_over_accessed": 0.07926829268292683,
+          "max_turns": 0,
+          "cost": 0.029117785
+        },
+        "codemode-both": {
+          "runs": 60,
+          "success": 0.9833333333333333,
+          "accessed": 27.25,
+          "exposed": 0.7,
+          "unnecessary": 0.15,
+          "unnecessary_ci": [
+            0,
+            0.38333333333333336
+          ],
+          "sensitive": 0,
+          "any_unnecessary": 0.06666666666666667,
+          "exposed_over_accessed": 0.025688073394495414,
+          "max_turns": 1,
+          "cost": 0.02986078
+        },
+        "mcp-full": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 19.666666666666668,
+          "exposed": 19.666666666666668,
+          "unnecessary": 19.116666666666667,
+          "unnecessary_ci": [
+            11.116666666666667,
+            28.6
+          ],
+          "sensitive": 3.85,
+          "any_unnecessary": 1,
+          "exposed_over_accessed": 1,
+          "max_turns": 0,
+          "cost": 0.012983220000000002
+        },
+        "mcp-select": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 19.45,
+          "exposed": 3.95,
+          "unnecessary": 3.4,
+          "unnecessary_ci": [
+            1.2333333333333334,
+            6.066666666666666
+          ],
+          "sensitive": 0.43333333333333335,
+          "any_unnecessary": 0.3,
+          "exposed_over_accessed": 0.20308483290488433,
+          "max_turns": 0,
+          "cost": 0.013133430000000001
+        }
+      },
+      "channels": {
+        "codemode-base": {
+          "total": 1214,
+          "share": {
+            "console": 0.4925864909390445,
+            "return": 0.5074135090609555,
+            "error": 0
+          },
+          "sensitive_console": 0.504424778761062
+        },
+        "codemode-minimal": {
+          "total": 986,
+          "share": {
+            "console": 0.29107505070993916,
+            "return": 0.7089249492900609,
+            "error": 0
+          },
+          "sensitive_console": 0.2268041237113402
+        },
+        "codemode-schema": {
+          "total": 84,
+          "share": {
+            "console": 0.05952380952380952,
+            "return": 0.9404761904761905,
+            "error": 0
+          },
+          "sensitive_console": 0.05263157894736842
+        },
+        "codemode-both": {
+          "total": 9,
+          "share": {
+            "console": 0,
+            "return": 1,
+            "error": 0
+          },
+          "sensitive_console": 0
+        }
+      },
+      "effects": {
+        "minimal": -2.5250000000000012,
+        "minimal_ci": [
+          -4.641666666666667,
+          -0.35833333333333334
+        ],
+        "schema": -17.558333333333334,
+        "schema_ci": [
+          -26.666666666666668,
+          -9.791666666666668
+        ],
+        "both_reduction": 0.9925864909390445
+      }
+    }
+  },
+  "cost": 0.3918530859999998
+}
