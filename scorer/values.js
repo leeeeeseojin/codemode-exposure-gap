@@ -86,7 +86,9 @@ export function keyOfRef(index, ref) {
 }
 
 /** 텍스트에 들어 있는 개인정보 값의 키를 모두 돌려준다 */
-export function findValues(index, text) {
+export function findValues(index, raw) {
+  // 여러 가지 대시 문자(U+2011 등)를 "-" 하나로 맞춘다. 모델이 다시 쓴 번호·날짜도 같은 값으로 찾기 위해서다
+  const text = String(raw).replace(/[‐-―−﹣－]/g, "-");
   const views = {
     loose: collapse(text),
     lower: collapse(text).toLowerCase(),
