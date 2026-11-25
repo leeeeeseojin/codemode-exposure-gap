@@ -33,12 +33,13 @@ function bar(x, y, w, h, cls, roundEnd) {
 export function stackedBars(o) {
   const labelW = 150;
   const panelW = 300;
-  const gap = 36;
+  const gap = 90;
   const rowH = 26;
   const barH = 16;
   const top = 86;
   const rowsN = Math.max(...o.panels.map((p) => p.rows.length));
-  const width = labelW + o.panels.length * panelW + (o.panels.length - 1) * gap + 20;
+  // 마지막 패널의 막대 끝 라벨("49% / 51% (1214개)")이 잘리지 않게 오른쪽 여백을 넉넉히 둔다
+  const width = labelW + o.panels.length * panelW + (o.panels.length - 1) * gap + 80;
   const height = top + rowsN * rowH + 36;
   const max = o.max ?? Math.max(...o.panels.flatMap((p) => p.rows.map((r) => r.values.reduce((a, b) => a + b, 0)))) * 1.15;
   const fmt = (v) => (o.percent ? `${Math.round(v * 100)}%` : v.toFixed(1));
