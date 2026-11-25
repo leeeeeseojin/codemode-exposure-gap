@@ -1,0 +1,6 @@
+node_modules/
+# OpenRouter 키. 실행기가 읽는다
+.env
+# 모델 응답 원본은 크고 반복이 많아 올리지 않는다. 채점에 필요한 기록은 runs/의 요약 JSON에 남긴다
+runs/**/raw/
+.tmp/

@@ -1,0 +1,17 @@
+{
+  "name": "codemode-exposure-gap",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Code Mode 에이전트가 과제에 필요한 것보다 얼마나 많은 개인정보를 모델에게 넘기는지 측정한다",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "run": "node scripts/run.js",
+    "review": "node scripts/review.js",
+    "analyze": "node scripts/analyze.js",
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
