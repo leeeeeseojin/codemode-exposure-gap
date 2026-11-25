@@ -10,18 +10,38 @@
 //
 // 후속 실험 조건 peek은 2×2 밖에 있다. 스키마도 지시도 없이, 값 없이 구조만 돌려주는 api.peek()만 더한다.
 // "구조를 몰라서 찍어 보다가 샌다"는 해석이 맞다면 peek만으로도 노출이 스키마 수준으로 줄어야 한다.
+//
+// peek은 스키마보다 절반만 효과가 있었는데, 스키마와는 주는 내용(필드 설명·값 목록)과 주는 때(처음부터 / 불러야)가 함께 달랐다.
+// 그래서 두 번째 후속 조건 types를 둔다. peek이 돌려주는 것과 똑같은 구조를 처음부터 execute 설명에 넣는다.
+// types가 스키마만큼 줄이면 차이는 "때"에서, peek만큼만 줄이면 "내용"에서 온 것이다.
 import { buildSpec } from "../api/openapi.js";
 import { handle } from "../api/server.js";
 import { runInSandbox } from "./sandbox.js";
 import { shapeOf } from "./shape.js";
 
 export const CODEMODE_CONDITIONS = {
-  base: { minimal: false, schema: false, peek: false },
-  minimal: { minimal: true, schema: false, peek: false },
-  schema: { minimal: false, schema: true, peek: false },
-  both: { minimal: true, schema: true, peek: false },
-  peek: { minimal: false, schema: false, peek: true },
+  base: { minimal: false, schema: false, peek: false, types: false },
+  minimal: { minimal: true, schema: false, peek: false, types: false },
+  schema: { minimal: false, schema: true, peek: false, types: false },
+  both: { minimal: true, schema: true, peek: false, types: false },
+  peek: { minimal: false, schema: false, peek: true, types: false },
+  types: { minimal: false, schema: false, peek: false, types: true },
 };
+
+/**
+ * types 조건에서 execute 설명에 넣는 구조. 손으로 적지 않고 peek과 같은 shapeOf()로 만들어서
+ * 두 조건이 받는 내용이 글자 단위로 같게 한다. 다른 것은 받는 때뿐이다.
+ */
+export function structureTypes() {
+  const lines = [];
+  for (const [name, path] of [["Customer", "/customers"], ["Contact", "/contacts"], ["Mail", "/mails"]]) {
+    lines.push(`${name} = ${JSON.stringify(shapeOf(handle({ path }).body).items[0])}`);
+  }
+  lines.push("GET /customers -> { items: [Customer], count: number }   GET /customers/{id} -> Customer");
+  lines.push("GET /contacts  -> { items: [Contact],  count: number }   GET /contacts/{id}  -> Contact");
+  lines.push("GET /mails     -> { items: [Mail],     count: number }   GET /mails/{id}     -> Mail");
+  return lines.join("\n");
+}
 
 // 스키마 조건에서 execute 설명에 붙이는 타입. Code Mode 구현들이 스펙에서 TypeScript 타입을 만들어 도구 설명에 넣는 방식을 따랐다
 const RESPONSE_TYPES = `
@@ -69,6 +89,7 @@ export function createCodeMode(conditionName, recorder) {
     "API는 `await api.get(path, query)`로 부른다. 예: `const r = await api.get(\"/customers\", { tier: \"gold\" })`.",
     "응답이 200이 아니면 예외가 난다. console.log 출력과 return 값, 에러 메시지가 결과로 돌아온다.",
     condition.schema ? `응답 타입:\n${RESPONSE_TYPES}` : "엔드포인트와 인자는 search 도구로 찾는다.",
+    condition.types ? `응답 구조(키 이름과 타입):\n${structureTypes()}` : null,
     // 사용을 권하지도, 개인정보를 언급하지도 않는다. 도구가 있다는 사실만 알려야 지시 조건과 섞이지 않는다
     condition.peek
       ? "`await api.peek(path, query)`는 같은 요청의 응답에서 값을 빼고 구조(키 이름과 타입)만 돌려준다."
