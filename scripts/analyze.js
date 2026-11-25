@@ -186,7 +186,7 @@ writeFileSync(
       title: modelLabel(model),
       rows: CONDITIONS.map((c) => {
         const row = summary.models[model].conditions[c.key];
-        return { label: c.label, values: row ? [row.unnecessary - row.sensitive, row.sensitive] : [0, 0] };
+        return { label: c.label, values: row ? [row.unnecessary - row.sensitive, row.sensitive] : [0, 0], note: row ? undefined : "-" };
       }),
     })),
   }),
