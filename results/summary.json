@@ -1,5 +1,5 @@
 {
-  "generated_from": 840,
+  "generated_from": 960,
   "excluded_api_errors": 0,
   "models": {
     "anthropic/claude-haiku-5.5": {
@@ -84,6 +84,22 @@
           "max_turns": 0,
           "cost": 0.0533954
         },
+        "codemode-types": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 26.8,
+          "exposed": 3.3833333333333333,
+          "unnecessary": 2.8333333333333335,
+          "unnecessary_ci": [
+            1.6,
+            4.183333333333334
+          ],
+          "sensitive": 0.35,
+          "any_unnecessary": 0.7333333333333333,
+          "exposed_over_accessed": 0.12624378109452736,
+          "max_turns": 0,
+          "cost": 0.0359159
+        },
         "mcp-full": {
           "runs": 60,
           "success": 1,
@@ -162,6 +178,15 @@
             "error": 0
           },
           "sensitive_console": 0.8521739130434782
+        },
+        "codemode-types": {
+          "total": 170,
+          "share": {
+            "console": 0,
+            "return": 1,
+            "error": 0
+          },
+          "sensitive_console": 0
         }
       },
       "phases": {
@@ -184,6 +209,10 @@
         "codemode-peek": {
           "explore": 0.8964346349745331,
           "final": 0.1035653650254669
+        },
+        "codemode-types": {
+          "explore": 0.058823529411764705,
+          "final": 0.9411764705882353
         }
       },
       "effects": {
@@ -208,12 +237,14 @@
         "단건 조회": {
           "base": 5,
           "peek": 5,
+          "types": 1.1666666666666667,
           "schema": 0.625,
           "used_rate": 0
         },
         "목록·집계": {
           "base": 27.833333333333332,
           "peek": 13.027777777777779,
+          "types": 3.9444444444444446,
           "schema": 2.0555555555555554,
           "used_rate": 0.25
         }
@@ -301,6 +332,22 @@
           "max_turns": 1,
           "cost": 0.036595979999999986
         },
+        "codemode-types": {
+          "runs": 60,
+          "success": 0.95,
+          "accessed": 22.9,
+          "exposed": 4.533333333333333,
+          "unnecessary": 4,
+          "unnecessary_ci": [
+            2.1,
+            6.533333333333333
+          ],
+          "sensitive": 0.8,
+          "any_unnecessary": 0.43333333333333335,
+          "exposed_over_accessed": 0.19796215429403202,
+          "max_turns": 0,
+          "cost": 0.026938235999999997
+        },
         "mcp-full": {
           "runs": 60,
           "success": 1,
@@ -379,6 +426,15 @@
             "error": 0
           },
           "sensitive_console": 0.10884353741496598
+        },
+        "codemode-types": {
+          "total": 240,
+          "share": {
+            "console": 0,
+            "return": 1,
+            "error": 0
+          },
+          "sensitive_console": 0
         }
       },
       "phases": {
@@ -401,6 +457,10 @@
         "codemode-peek": {
           "explore": 0.3347517730496454,
           "final": 0.6652482269503546
+        },
+        "codemode-types": {
+          "explore": 0.15,
+          "final": 0.85
         }
       },
       "effects": {
@@ -425,17 +485,19 @@
         "단건 조회": {
           "base": 6.208333333333333,
           "peek": 4.791666666666667,
+          "types": 3.1666666666666665,
           "schema": 1.4166666666666667,
           "used_rate": 0.125
         },
         "목록·집계": {
           "base": 30.11111111111111,
           "peek": 16.38888888888889,
+          "types": 4.555555555555555,
           "schema": 1.3888888888888888,
           "used_rate": 0.5
         }
       }
     }
   },
-  "cost": 0.48184446599999975
+  "cost": 0.5446986020000005
 }
