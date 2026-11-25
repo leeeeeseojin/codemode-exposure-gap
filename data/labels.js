@@ -1,7 +1,7 @@
 // 필드 라벨.
 //   none: 개인정보가 아니다 (주문 상태, 등급, ID 등)
 //   personal: 개인정보
-//   sensitive: 개인정보 중 민감 정보 (카드 번호, 건강 정보, 여권 번호, 계좌)
+//   sensitive: 개인정보 중 민감 정보 (카드 번호, 건강 정보, 여권 번호, 계좌. 메일 본문 속 건강 정보와 계좌 포함)
 //
 // "필요/불필요"는 필드에 고정된 성질이 아니라 과제마다 달라서 여기 두지 않는다.
 // 같은 이메일이라도 "C003 이메일 알려줘"에서는 필요하고 "C003 배송 상태"에서는 불필요하다. 과제별 목록은 tasks.js에 있다.
@@ -30,6 +30,8 @@ export const FIELD_LABELS = {
     from_email: { label: "personal", match: "email" },
     body: { label: "personal", match: "fragment" },
     "embedded.bank_account": { label: "sensitive", match: "digits" },
+    // 본문 속 건강 정보. 고객 레코드의 health_note와 문장이 달라 거기에는 걸리지 않아서 따로 둔다
+    "embedded.health": { label: "sensitive", match: "fragment" },
   },
 };
 
