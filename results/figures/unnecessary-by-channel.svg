@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="226" viewBox="0 0 920 226" role="img" aria-label="Code Mode에서 불필요 노출이 처음 나온 경로">
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="252" viewBox="0 0 920 252" role="img" aria-label="Code Mode에서 불필요 노출이 처음 나온 경로">
 <style>
 svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;font-family:-apple-system,"Segoe UI","Noto Sans KR",sans-serif}
 @media (prefers-color-scheme: dark){svg{--surface:#1a1a19;--text:#f0efec;--muted:#c3c2b7;--grid:#3a3936;--s1:#3987e5;--s2:#d95926;--s3:#199e70}}
 .bg{fill:var(--surface)} .t{fill:var(--text)} .m{fill:var(--muted)} .g{stroke:var(--grid)}
 .s1{fill:var(--s1)} .s2{fill:var(--s2)} .s3{fill:var(--s3)}
 </style>
-<rect class="bg" width="920" height="226" rx="8"/>
+<rect class="bg" width="920" height="252" rx="8"/>
 <text class="t" x="16" y="26" font-size="15" font-weight="600">Code Mode에서 불필요 노출이 처음 나온 경로</text>
 <text class="m" x="16" y="45" font-size="12">불필요 노출 값 전체를 100%로 본 비율</text>
 <rect class="s1" x="16" y="55" width="10" height="10" rx="2"/>
@@ -15,7 +15,7 @@ svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6
 <rect class="s3" x="406" y="55" width="10" height="10" rx="2"/>
 <text class="m" x="421" y="64" font-size="12">에러 메시지</text>
 <text class="t" x="150" y="80" font-size="12" font-weight="600">Claude Haiku 5.5</text>
-<line class="g" x1="150" x2="150" y1="86" y2="190" stroke-width="1"/>
+<line class="g" x1="150" x2="150" y1="86" y2="216" stroke-width="1"/>
 <text class="t" x="140" y="104" font-size="12" text-anchor="end">Code Mode 기본</text>
 <path class="s1" d="M150,91h33.31073446327684a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-33.31073446327684z"/>
 <path class="s2" d="M185.31073446327684,91h172.5536723163842a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-172.5536723163842z"/>
@@ -36,8 +36,13 @@ svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6
 <path class="s2" d="M150,169h207.86440677966104a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-207.86440677966104z"/>
 
 <text class="m" x="367.86440677966107" y="182" font-size="12">0% / 100% (15개)</text>
+<text class="t" x="140" y="208" font-size="12" text-anchor="end">Code Mode 구조 보기</text>
+<path class="s1" d="M150,195h181.08825645305174a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-181.08825645305174z"/>
+<path class="s2" d="M333.0882564530517,195h24.776150326609308a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-24.776150326609308z"/>
+
+<text class="m" x="367.864406779661" y="208" font-size="12">86% / 14% (589개)</text>
 <text class="t" x="540" y="80" font-size="12" font-weight="600">GPT-OSS 120B</text>
-<line class="g" x1="540" x2="540" y1="86" y2="190" stroke-width="1"/>
+<line class="g" x1="540" x2="540" y1="86" y2="216" stroke-width="1"/>
 <path class="s1" d="M540,91h101.9561768870194a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-101.9561768870194z"/>
 <path class="s2" d="M643.9561768870194,91h103.90822989264163a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-103.90822989264163z"/>
 
@@ -54,4 +59,8 @@ svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6
 <path class="s2" d="M540,169h207.86440677966104a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-207.86440677966104z"/>
 
 <text class="m" x="757.8644067796611" y="182" font-size="12">0% / 100% (9개)</text>
+<path class="s1" d="M540,195h23.243418680129825a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-23.243418680129825z"/>
+<path class="s2" d="M565.2434186801298,195h182.62098809953122a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-182.62098809953122z"/>
+
+<text class="m" x="757.8644067796611" y="208" font-size="12">12% / 88% (705개)</text>
 </svg>

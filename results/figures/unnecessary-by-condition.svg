@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="278" viewBox="0 0 920 278" role="img" aria-label="과제 하나에서 모델에게 넘어간 불필요한 개인정보 (평균 개수)">
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="304" viewBox="0 0 920 304" role="img" aria-label="과제 하나에서 모델에게 넘어간 불필요한 개인정보 (평균 개수)">
 <style>
 svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;font-family:-apple-system,"Segoe UI","Noto Sans KR",sans-serif}
 @media (prefers-color-scheme: dark){svg{--surface:#1a1a19;--text:#f0efec;--muted:#c3c2b7;--grid:#3a3936;--s1:#3987e5;--s2:#d95926;--s3:#199e70}}
 .bg{fill:var(--surface)} .t{fill:var(--text)} .m{fill:var(--muted)} .g{stroke:var(--grid)}
 .s1{fill:var(--s1)} .s2{fill:var(--s2)} .s3{fill:var(--s3)}
 </style>
-<rect class="bg" width="920" height="278" rx="8"/>
+<rect class="bg" width="920" height="304" rx="8"/>
 <text class="t" x="16" y="26" font-size="15" font-weight="600">과제 하나에서 모델에게 넘어간 불필요한 개인정보 (평균 개수)</text>
 <text class="m" x="16" y="45" font-size="12">이상적 최소 노출은 0이다. 과제 20개 × 3회</text>
 <rect class="s1" x="16" y="55" width="10" height="10" rx="2"/>
@@ -13,7 +13,7 @@ svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6
 <rect class="s2" x="133" y="55" width="10" height="10" rx="2"/>
 <text class="m" x="148" y="64" font-size="12">민감 정보</text>
 <text class="t" x="150" y="80" font-size="12" font-weight="600">Claude Haiku 5.5</text>
-<line class="g" x1="150" x2="150" y1="86" y2="242" stroke-width="1"/>
+<line class="g" x1="150" x2="150" y1="86" y2="268" stroke-width="1"/>
 <text class="t" x="140" y="104" font-size="12" text-anchor="end">Code Mode 기본</text>
 <path class="s1" d="M150,91h149.30976990070826a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-149.30976990070826z"/>
 <path class="s2" d="M301.30976990070826,91h34.80172150869227a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-34.80172150869227z"/>
@@ -30,16 +30,20 @@ svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6
 <path class="s1" d="M150,169h0a2.541597478735301,2.541597478735301 0 0 1 2.541597478735301,2.541597478735301v10.916805042529397a2.541597478735301,2.541597478735301 0 0 1 -2.541597478735301,2.541597478735301h-0z"/>
 
 <text class="m" x="158.5415974787353" y="182" font-size="12">0.3</text>
-<text class="t" x="140" y="208" font-size="12" text-anchor="end">MCP 전체 반환</text>
-<path class="s1" d="M150,195h170.99806838591616a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-170.99806838591616z"/>
-<path class="s2" d="M322.99806838591616,195h40.39323596190992a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-40.39323596190992z"/>
-<text class="m" x="373.39130434782606" y="208" font-size="12">21.4</text>
-<text class="t" x="140" y="234" font-size="12" text-anchor="end">MCP 필드 선택</text>
-<path class="s1" d="M150,221h21.754854451184386a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-21.754854451184386z"/>
+<text class="t" x="140" y="208" font-size="12" text-anchor="end">Code Mode 구조 보기</text>
+<path class="s1" d="M150,195h78.31448032803551a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-78.31448032803551z"/>
+<path class="s2" d="M230.31448032803553,195h15.485580670303978a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-15.485580670303978z"/>
+<text class="m" x="255.80006099833952" y="208" font-size="12">9.8</text>
+<text class="t" x="140" y="234" font-size="12" text-anchor="end">MCP 전체 반환</text>
+<path class="s1" d="M150,221h170.99806838591616a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-170.99806838591616z"/>
+<path class="s2" d="M322.99806838591616,221h40.39323596190992a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-40.39323596190992z"/>
+<text class="m" x="373.39130434782606" y="234" font-size="12">21.4</text>
+<text class="t" x="140" y="260" font-size="12" text-anchor="end">MCP 필드 선택</text>
+<path class="s1" d="M150,247h21.754854451184386a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-21.754854451184386z"/>
 
-<text class="m" x="181.75485445118437" y="234" font-size="12">2.5</text>
+<text class="m" x="181.75485445118437" y="260" font-size="12">2.5</text>
 <text class="t" x="540" y="80" font-size="12" font-weight="600">GPT-OSS 120B</text>
-<line class="g" x1="540" x2="540" y1="86" y2="242" stroke-width="1"/>
+<line class="g" x1="540" x2="540" y1="86" y2="268" stroke-width="1"/>
 <path class="s1" d="M540,91h165.40655393269853a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-165.40655393269853z"/>
 <path class="s2" d="M707.4065539326986,91h37.51275881934325a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-37.51275881934325z"/>
 <text class="m" x="754.9193127520418" y="104" font-size="12">20.6</text>
@@ -52,10 +56,13 @@ svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6
 <path class="s1" d="M540,169h0a1.5249584872411805,1.5249584872411805 0 0 1 1.5249584872411805,1.5249584872411805v12.950083025517639a1.5249584872411805,1.5249584872411805 0 0 1 -1.5249584872411805,1.5249584872411805h-0z"/>
 
 <text class="m" x="547.5249584872412" y="182" font-size="12">0.1</text>
-<path class="s1" d="M540,195h153.20688603476904a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-153.20688603476904z"/>
-<path class="s2" d="M695.206886034769,195h37.17387915551188a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-37.17387915551188z"/>
-<text class="m" x="742.3807651902808" y="208" font-size="12">19.3</text>
-<path class="s1" d="M540,221h28.160290080992237a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-28.160290080992237z"/>
-<path class="s2" d="M570.1602900809922,221h0.5748754617235425a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-0.5748754617235425z"/>
-<text class="m" x="580.7351655427158" y="234" font-size="12">3.4</text>
+<path class="s1" d="M540,195h92.54742620895321a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-92.54742620895321z"/>
+<path class="s2" d="M634.5474262089532,195h20.907655291605952a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-20.907655291605952z"/>
+<text class="m" x="665.4550815005591" y="208" font-size="12">11.8</text>
+<path class="s1" d="M540,221h153.20688603476904a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-153.20688603476904z"/>
+<path class="s2" d="M695.206886034769,221h37.17387915551188a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-37.17387915551188z"/>
+<text class="m" x="742.3807651902808" y="234" font-size="12">19.3</text>
+<path class="s1" d="M540,247h28.160290080992237a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-28.160290080992237z"/>
+<path class="s2" d="M570.1602900809922,247h0.5748754617235425a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-0.5748754617235425z"/>
+<text class="m" x="580.7351655427158" y="260" font-size="12">3.4</text>
 </svg>

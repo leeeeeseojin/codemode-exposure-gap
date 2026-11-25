@@ -1,5 +1,5 @@
 {
-  "generated_from": 720,
+  "generated_from": 840,
   "excluded_api_errors": 0,
   "models": {
     "anthropic/claude-haiku-5.5": {
@@ -67,6 +67,22 @@
           "exposed_over_accessed": 0.026845637583892617,
           "max_turns": 0,
           "cost": 0.028741299999999997
+        },
+        "codemode-peek": {
+          "runs": 60,
+          "success": 1,
+          "accessed": 22.283333333333335,
+          "exposed": 10.366666666666667,
+          "unnecessary": 9.816666666666666,
+          "unnecessary_ci": [
+            6.816666666666666,
+            13.65
+          ],
+          "sensitive": 1.9166666666666667,
+          "any_unnecessary": 0.8833333333333333,
+          "exposed_over_accessed": 0.46522064323111445,
+          "max_turns": 0,
+          "cost": 0.0533954
         },
         "mcp-full": {
           "runs": 60,
@@ -137,6 +153,15 @@
             "error": 0
           },
           "sensitive_console": 0
+        },
+        "codemode-peek": {
+          "total": 589,
+          "share": {
+            "console": 0.8641765704584041,
+            "return": 0.13582342954159593,
+            "error": 0
+          },
+          "sensitive_console": 0.8521739130434782
         }
       },
       "phases": {
@@ -155,6 +180,10 @@
         "codemode-both": {
           "explore": 0,
           "final": 1
+        },
+        "codemode-peek": {
+          "explore": 0.8964346349745331,
+          "final": 0.1035653650254669
         }
       },
       "effects": {
@@ -169,6 +198,25 @@
           -4.925000000000001
         ],
         "both_reduction": 0.9866310160427807
+      },
+      "peek": {
+        "used_rate": 0.15,
+        "unnecessary_used": 3.3333333333333335,
+        "unnecessary_unused": 10.96078431372549
+      },
+      "peek_by_kind": {
+        "단건 조회": {
+          "base": 5,
+          "peek": 5,
+          "schema": 0.625,
+          "used_rate": 0
+        },
+        "목록·집계": {
+          "base": 27.833333333333332,
+          "peek": 13.027777777777779,
+          "schema": 2.0555555555555554,
+          "used_rate": 0.25
+        }
       }
     },
     "openai/gpt-oss-120b": {
@@ -236,6 +284,22 @@
           "exposed_over_accessed": 0.025439127801332527,
           "max_turns": 1,
           "cost": 0.02986078
+        },
+        "codemode-peek": {
+          "runs": 60,
+          "success": 0.9166666666666666,
+          "accessed": 19.95,
+          "exposed": 12.266666666666667,
+          "unnecessary": 11.75,
+          "unnecessary_ci": [
+            7.733333333333333,
+            16.433333333333334
+          ],
+          "sensitive": 2.45,
+          "any_unnecessary": 0.7833333333333333,
+          "exposed_over_accessed": 0.6148705096073517,
+          "max_turns": 1,
+          "cost": 0.036595979999999986
         },
         "mcp-full": {
           "runs": 60,
@@ -306,6 +370,15 @@
             "error": 0
           },
           "sensitive_console": 0
+        },
+        "codemode-peek": {
+          "total": 705,
+          "share": {
+            "console": 0.11914893617021277,
+            "return": 0.8808510638297873,
+            "error": 0
+          },
+          "sensitive_console": 0.10884353741496598
         }
       },
       "phases": {
@@ -324,6 +397,10 @@
         "codemode-both": {
           "explore": 0,
           "final": 1
+        },
+        "codemode-peek": {
+          "explore": 0.3347517730496454,
+          "final": 0.6652482269503546
         }
       },
       "effects": {
@@ -338,8 +415,27 @@
           -9.941666666666666
         ],
         "both_reduction": 0.9927007299270073
+      },
+      "peek": {
+        "used_rate": 0.35,
+        "unnecessary_used": 14.714285714285714,
+        "unnecessary_unused": 10.153846153846153
+      },
+      "peek_by_kind": {
+        "단건 조회": {
+          "base": 6.208333333333333,
+          "peek": 4.791666666666667,
+          "schema": 1.4166666666666667,
+          "used_rate": 0.125
+        },
+        "목록·집계": {
+          "base": 30.11111111111111,
+          "peek": 16.38888888888889,
+          "schema": 1.3888888888888888,
+          "used_rate": 0.5
+        }
       }
     }
   },
-  "cost": 0.3918530859999998
+  "cost": 0.48184446599999975
 }
