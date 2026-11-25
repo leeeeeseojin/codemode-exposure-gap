@@ -10,6 +10,17 @@ const TIMEOUT_MS = 5000;
 /** 경로 하나에서 모델에게 보내는 최대 글자 수. 넘치면 자르고, 잘린 뒤의 내용은 노출로 세지 않는다 */
 export const MAX_CHANNEL_CHARS = 8000;
 
+// 에이전트 코드가 await 없이 띄운 Promise가 실행이 끝난 뒤 실패하면, vm은 같은 프로세스라 실행기 전체가 죽는다.
+// 본 실행 74회째에 실제로 이 일로 멈췄다. 샌드박스 코드에서 난 것만 경고로 남기고 넘어간다.
+// 모델에게는 전달하지 않는다. 이미 결과를 돌려준 뒤라 실제 Code Mode에서도 모델이 볼 수 없는 출력이다.
+process.on("unhandledRejection", (reason) => {
+  if (String(reason?.stack ?? "").includes("agent-code.js")) {
+    console.warn(`(샌드박스에서 처리되지 않은 Promise 실패를 무시함: ${reason?.message ?? reason})`);
+    return;
+  }
+  throw reason;
+});
+
 const show = (v) => (typeof v === "string" ? v : inspect(v, { depth: 6, breakLength: 120 }));
 
 function cap(text) {
