@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="226" viewBox="0 0 920 226" role="img" aria-label="Code Mode에서 불필요 노출이 처음 나온 경로">
+<style>
+svg{--surface:#fcfcfb;--text:#0b0b0b;--muted:#52514e;--grid:#e4e3df;--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;font-family:-apple-system,"Segoe UI","Noto Sans KR",sans-serif}
+@media (prefers-color-scheme: dark){svg{--surface:#1a1a19;--text:#f0efec;--muted:#c3c2b7;--grid:#3a3936;--s1:#3987e5;--s2:#d95926;--s3:#199e70}}
+.bg{fill:var(--surface)} .t{fill:var(--text)} .m{fill:var(--muted)} .g{stroke:var(--grid)}
+.s1{fill:var(--s1)} .s2{fill:var(--s2)} .s3{fill:var(--s3)}
+</style>
+<rect class="bg" width="920" height="226" rx="8"/>
+<text class="t" x="16" y="26" font-size="15" font-weight="600">Code Mode에서 불필요 노출이 처음 나온 경로</text>
+<text class="m" x="16" y="45" font-size="12">불필요 노출 값 전체를 100%로 본 비율</text>
+<rect class="s1" x="16" y="55" width="10" height="10" rx="2"/>
+<text class="m" x="31" y="64" font-size="12">탐색 출력 (console)</text>
+<rect class="s2" x="229" y="55" width="10" height="10" rx="2"/>
+<text class="m" x="244" y="64" font-size="12">반환값 (return)</text>
+<rect class="s3" x="406" y="55" width="10" height="10" rx="2"/>
+<text class="m" x="421" y="64" font-size="12">에러 메시지</text>
+<text class="t" x="150" y="80" font-size="12" font-weight="600">Claude Haiku 5.5</text>
+<line class="g" x1="150" x2="150" y1="86" y2="190" stroke-width="1"/>
+<text class="t" x="140" y="104" font-size="12" text-anchor="end">Code Mode 기본</text>
+<path class="s1" d="M150,91h33.8864529599607a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-33.8864529599607z"/>
+<path class="s2" d="M185.8864529599607,91h171.97795381970033a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-171.97795381970033z"/>
+
+<text class="m" x="367.86440677966107" y="104" font-size="12">17% / 83% (1104개)</text>
+<text class="t" x="140" y="130" font-size="12" text-anchor="end">Code Mode 최소 반환</text>
+<path class="s1" d="M150,117h43.39951573849879a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-43.39951573849879z"/>
+<path class="s2" d="M195.3995157384988,117h162.46489104116225a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-162.46489104116225z"/>
+
+<text class="m" x="367.86440677966107" y="130" font-size="12">21% / 79% (14개)</text>
+<text class="t" x="140" y="156" font-size="12" text-anchor="end">Code Mode 스키마</text>
+<path class="s1" d="M150,143h2.760997905160922a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-2.760997905160922z"/>
+<path class="s2" d="M154.76099790516093,143h203.1034088745001a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-203.1034088745001z"/>
+
+<text class="m" x="367.86440677966107" y="156" font-size="12">2% / 98% (89개)</text>
+<text class="t" x="140" y="182" font-size="12" text-anchor="end">Code Mode 둘 다</text>
+
+<path class="s2" d="M150,169h207.86440677966104a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-207.86440677966104z"/>
+
+<text class="m" x="367.86440677966107" y="182" font-size="12">0% / 100% (15개)</text>
+<text class="t" x="540" y="80" font-size="12" font-weight="600">GPT-OSS 120B</text>
+<line class="g" x1="540" x2="540" y1="86" y2="190" stroke-width="1"/>
+<path class="s1" d="M540,91h102.36154469047554a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-102.36154469047554z"/>
+<path class="s2" d="M644.3615446904755,91h103.5028620891855a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-103.5028620891855z"/>
+
+<text class="m" x="757.8644067796611" y="104" font-size="12">49% / 51% (1214개)</text>
+<path class="s1" d="M540,117h59.66844294702101a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-59.66844294702101z"/>
+<path class="s2" d="M601.668442947021,117h146.19596383264002a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-146.19596383264002z"/>
+
+<text class="m" x="757.8644067796611" y="130" font-size="12">29% / 71% (986개)</text>
+<path class="s1" d="M540,143h10.610976594027441a0,0 0 0 1 0,0v16a0,0 0 0 1 -0,0h-10.610976594027441z"/>
+<path class="s2" d="M552.6109765940274,143h195.25343018563356a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-195.25343018563356z"/>
+
+<text class="m" x="757.864406779661" y="156" font-size="12">6% / 94% (84개)</text>
+
+<path class="s2" d="M540,169h207.86440677966104a4,4 0 0 1 4,4v8a4,4 0 0 1 -4,4h-207.86440677966104z"/>
+
+<text class="m" x="757.8644067796611" y="182" font-size="12">0% / 100% (9개)</text>
+</svg>
