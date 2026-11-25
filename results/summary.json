@@ -7,23 +7,23 @@
         "codemode-base": {
           "runs": 60,
           "success": 1,
-          "accessed": 23.45,
-          "exposed": 18.95,
-          "unnecessary": 18.4,
+          "accessed": 23.766666666666666,
+          "exposed": 19.25,
+          "unnecessary": 18.7,
           "unnecessary_ci": [
-            11.283333333333333,
-            26.233333333333334
+            11.433333333333334,
+            26.633333333333333
           ],
-          "sensitive": 3.5166666666666666,
+          "sensitive": 3.816666666666667,
           "any_unnecessary": 1,
-          "exposed_over_accessed": 0.8081023454157783,
+          "exposed_over_accessed": 0.8099579242636746,
           "max_turns": 0,
           "cost": 0.050635999999999994
         },
         "codemode-minimal": {
           "runs": 60,
           "success": 1,
-          "accessed": 22.416666666666668,
+          "accessed": 22.716666666666665,
           "exposed": 0.7833333333333333,
           "unnecessary": 0.23333333333333334,
           "unnecessary_ci": [
@@ -32,14 +32,14 @@
           ],
           "sensitive": 0,
           "any_unnecessary": 0.13333333333333333,
-          "exposed_over_accessed": 0.03494423791821561,
+          "exposed_over_accessed": 0.034482758620689655,
           "max_turns": 0,
           "cost": 0.06627250000000001
         },
         "codemode-schema": {
           "runs": 60,
           "success": 1,
-          "accessed": 28.533333333333335,
+          "accessed": 28.816666666666666,
           "exposed": 2.033333333333333,
           "unnecessary": 1.4833333333333334,
           "unnecessary_ci": [
@@ -48,14 +48,14 @@
           ],
           "sensitive": 0.1,
           "any_unnecessary": 0.5333333333333333,
-          "exposed_over_accessed": 0.07126168224299065,
+          "exposed_over_accessed": 0.07056101792943899,
           "max_turns": 0,
           "cost": 0.026019199999999992
         },
         "codemode-both": {
           "runs": 60,
           "success": 1,
-          "accessed": 29.45,
+          "accessed": 29.8,
           "exposed": 0.8,
           "unnecessary": 0.25,
           "unnecessary_ci": [
@@ -64,21 +64,21 @@
           ],
           "sensitive": 0,
           "any_unnecessary": 0.15,
-          "exposed_over_accessed": 0.027164685908319185,
+          "exposed_over_accessed": 0.026845637583892617,
           "max_turns": 0,
           "cost": 0.028741299999999997
         },
         "mcp-full": {
           "runs": 60,
           "success": 1,
-          "accessed": 21.633333333333333,
-          "exposed": 21.633333333333333,
-          "unnecessary": 21.083333333333332,
+          "accessed": 21.933333333333334,
+          "exposed": 21.933333333333334,
+          "unnecessary": 21.383333333333333,
           "unnecessary_ci": [
-            12.6,
-            30.6
+            12.8,
+            30.85
           ],
-          "sensitive": 4.066666666666666,
+          "sensitive": 4.366666666666666,
           "any_unnecessary": 1,
           "exposed_over_accessed": 1,
           "max_turns": 0,
@@ -87,7 +87,7 @@
         "mcp-select": {
           "runs": 60,
           "success": 1,
-          "accessed": 22.416666666666668,
+          "accessed": 22.716666666666665,
           "exposed": 3.0833333333333335,
           "unnecessary": 2.533333333333333,
           "unnecessary_ci": [
@@ -96,20 +96,20 @@
           ],
           "sensitive": 0,
           "any_unnecessary": 0.43333333333333335,
-          "exposed_over_accessed": 0.137546468401487,
+          "exposed_over_accessed": 0.13573000733675716,
           "max_turns": 0,
           "cost": 0.03051390000000001
         }
       },
       "channels": {
         "codemode-base": {
-          "total": 1104,
+          "total": 1122,
           "share": {
-            "console": 0.1693840579710145,
-            "return": 0.8306159420289855,
+            "console": 0.16666666666666666,
+            "return": 0.8333333333333334,
             "error": 0
           },
-          "sensitive_console": 0.17535545023696683
+          "sensitive_console": 0.1615720524017467
         },
         "codemode-minimal": {
           "total": 14,
@@ -141,8 +141,8 @@
       },
       "phases": {
         "codemode-base": {
-          "explore": 0.29438405797101447,
-          "final": 0.7056159420289855
+          "explore": 0.29411764705882354,
+          "final": 0.7058823529411765
         },
         "codemode-minimal": {
           "explore": 0.21428571428571427,
@@ -158,17 +158,17 @@
         }
       },
       "effects": {
-        "minimal": -9.7,
+        "minimal": -9.85,
         "minimal_ci": [
-          -13.65,
-          -6
+          -13.908333333333333,
+          -6.1083333333333325
         ],
-        "schema": -8.45,
+        "schema": -8.6,
         "schema_ci": [
-          -12.408333333333333,
-          -4.841666666666667
+          -12.658333333333333,
+          -4.925000000000001
         ],
-        "both_reduction": 0.9864130434782609
+        "both_reduction": 0.9866310160427807
       }
     },
     "openai/gpt-oss-120b": {
@@ -176,39 +176,39 @@
         "codemode-base": {
           "runs": 60,
           "success": 0.9833333333333333,
-          "accessed": 23.3,
-          "exposed": 20.783333333333335,
-          "unnecessary": 20.233333333333334,
+          "accessed": 23.616666666666667,
+          "exposed": 21.1,
+          "unnecessary": 20.55,
           "unnecessary_ci": [
-            12.5,
-            28.533333333333335
+            12.716666666666667,
+            28.983333333333334
           ],
-          "sensitive": 3.7666666666666666,
+          "sensitive": 4.083333333333333,
           "any_unnecessary": 0.9666666666666667,
-          "exposed_over_accessed": 0.8919885550786838,
+          "exposed_over_accessed": 0.8934368383909669,
           "max_turns": 0,
           "cost": 0.03868010899999998
         },
         "codemode-minimal": {
           "runs": 60,
           "success": 0.8666666666666667,
-          "accessed": 20.283333333333335,
-          "exposed": 16.95,
-          "unnecessary": 16.433333333333334,
+          "accessed": 20.5,
+          "exposed": 17.1,
+          "unnecessary": 16.583333333333332,
           "unnecessary_ci": [
-            7.833333333333333,
-            26.666666666666668
+            7.883333333333334,
+            26.816666666666666
           ],
-          "sensitive": 3.2333333333333334,
+          "sensitive": 3.3833333333333333,
           "any_unnecessary": 0.65,
-          "exposed_over_accessed": 0.8356614626129828,
+          "exposed_over_accessed": 0.8341463414634146,
           "max_turns": 0,
           "cost": 0.038651262
         },
         "codemode-schema": {
           "runs": 60,
           "success": 1,
-          "accessed": 24.6,
+          "accessed": 24.95,
           "exposed": 1.95,
           "unnecessary": 1.4,
           "unnecessary_ci": [
@@ -217,14 +217,14 @@
           ],
           "sensitive": 0.31666666666666665,
           "any_unnecessary": 0.16666666666666666,
-          "exposed_over_accessed": 0.07926829268292683,
+          "exposed_over_accessed": 0.0781563126252505,
           "max_turns": 0,
           "cost": 0.029117785
         },
         "codemode-both": {
           "runs": 60,
           "success": 0.9833333333333333,
-          "accessed": 27.25,
+          "accessed": 27.516666666666666,
           "exposed": 0.7,
           "unnecessary": 0.15,
           "unnecessary_ci": [
@@ -233,21 +233,21 @@
           ],
           "sensitive": 0,
           "any_unnecessary": 0.06666666666666667,
-          "exposed_over_accessed": 0.025688073394495414,
+          "exposed_over_accessed": 0.025439127801332527,
           "max_turns": 1,
           "cost": 0.02986078
         },
         "mcp-full": {
           "runs": 60,
           "success": 1,
-          "accessed": 19.666666666666668,
-          "exposed": 19.666666666666668,
-          "unnecessary": 19.116666666666667,
+          "accessed": 19.866666666666667,
+          "exposed": 19.866666666666667,
+          "unnecessary": 19.316666666666666,
           "unnecessary_ci": [
-            11.116666666666667,
-            28.6
+            11.266666666666667,
+            28.85
           ],
-          "sensitive": 3.85,
+          "sensitive": 4.05,
           "any_unnecessary": 1,
           "exposed_over_accessed": 1,
           "max_turns": 0,
@@ -256,38 +256,38 @@
         "mcp-select": {
           "runs": 60,
           "success": 1,
-          "accessed": 19.45,
-          "exposed": 3.95,
-          "unnecessary": 3.4,
+          "accessed": 19.65,
+          "exposed": 3.966666666666667,
+          "unnecessary": 3.4166666666666665,
           "unnecessary_ci": [
-            1.2333333333333334,
-            6.066666666666666
+            1.25,
+            6.083333333333333
           ],
-          "sensitive": 0.43333333333333335,
+          "sensitive": 0.45,
           "any_unnecessary": 0.3,
-          "exposed_over_accessed": 0.20308483290488433,
+          "exposed_over_accessed": 0.2018659881255301,
           "max_turns": 0,
           "cost": 0.013133430000000001
         }
       },
       "channels": {
         "codemode-base": {
-          "total": 1214,
+          "total": 1233,
           "share": {
-            "console": 0.4925864909390445,
-            "return": 0.5074135090609555,
+            "console": 0.4906731549067315,
+            "return": 0.5093268450932684,
             "error": 0
           },
-          "sensitive_console": 0.504424778761062
+          "sensitive_console": 0.49387755102040815
         },
         "codemode-minimal": {
-          "total": 986,
+          "total": 995,
           "share": {
-            "console": 0.29107505070993916,
-            "return": 0.7089249492900609,
+            "console": 0.29547738693467335,
+            "return": 0.7045226130653266,
             "error": 0
           },
-          "sensitive_console": 0.2268041237113402
+          "sensitive_console": 0.2512315270935961
         },
         "codemode-schema": {
           "total": 84,
@@ -310,12 +310,12 @@
       },
       "phases": {
         "codemode-base": {
-          "explore": 0.6952224052718287,
-          "final": 0.30477759472817134
+          "explore": 0.6950527169505272,
+          "final": 0.30494728304947283
         },
         "codemode-minimal": {
-          "explore": 0.5425963488843814,
-          "final": 0.45740365111561865
+          "explore": 0.5457286432160804,
+          "final": 0.4542713567839196
         },
         "codemode-schema": {
           "explore": 0.19047619047619047,
@@ -327,17 +327,17 @@
         }
       },
       "effects": {
-        "minimal": -2.5250000000000012,
+        "minimal": -2.608333333333335,
         "minimal_ci": [
-          -4.641666666666667,
-          -0.35833333333333334
+          -4.783333333333333,
+          -0.39166666666666805
         ],
-        "schema": -17.558333333333334,
+        "schema": -17.791666666666664,
         "schema_ci": [
-          -26.666666666666668,
-          -9.791666666666668
+          -26.866666666666667,
+          -9.941666666666666
         ],
-        "both_reduction": 0.9925864909390445
+        "both_reduction": 0.9927007299270073
       }
     }
   },
