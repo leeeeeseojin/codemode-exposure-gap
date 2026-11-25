@@ -54,3 +54,9 @@ test("정답 판정은 비슷하지만 틀린 답을 거른다", () => {
   assert.equal(isCorrect(byId.T06, "010-5528-1947"), false);
   assert.equal(isCorrect(byId.T12, "10명입니다."), false);
 });
+
+test("줄바꿈 없는 하이픈(U+2011)으로 쓴 날짜·번호도 맞게 판정한다", () => {
+  const byId = Object.fromEntries(TASKS.map((t) => [t.id, t]));
+  assert.ok(isCorrect(byId.T02, "우체국택배, 도착 예정일 2026‑11‑26"));
+  assert.ok(isCorrect(byId.T06, "010‑5528‑1946"));
+});

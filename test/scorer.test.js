@@ -27,6 +27,8 @@ test("형식이 바뀐 전화번호·날짜도 찾는다", () => {
   assert.deepEqual(refsIn("연락처 01028415507"), ["customers/C001/phone"]);
   assert.deepEqual(refsIn("생일 1988년 11월 2일"), ["customers/C002/birth_date"]);
   assert.deepEqual(refsIn("JIHO.PARK@KMAIL.CO.KR"), ["customers/C003/email"]);
+  assert.deepEqual(refsIn("010‑2841‑5507"), ["customers/C001/phone"]);
+  assert.deepEqual(refsIn("1991‑04‑17"), ["customers/C001/birth_date"]);
 });
 
 test("일부만 나온 값은 세지 않는다", () => {
