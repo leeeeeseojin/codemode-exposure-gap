@@ -1,0 +1,68 @@
+{
+  "model": "openai/gpt-oss-120b",
+  "env": "codemode",
+  "cond": "types",
+  "task": "T09",
+  "rep": 3,
+  "served_model": "openai/gpt-oss-120b",
+  "exit": "answer",
+  "error": null,
+  "final_answer": "포인트가 가장 많은 고객의 ID는 **C008**입니다.",
+  "correct": true,
+  "turns": 3,
+  "tool_calls": [
+    {
+      "name": "search",
+      "args": {
+        "query": "customers"
+      }
+    },
+    {
+      "name": "execute",
+      "args": {
+        "code": "const r = await api.get('/customers');\nconst customers = r.items;\nlet maxCust = customers[0];\nfor (const c of customers) {\n  if (c.points > maxCust.points) maxCust = c;\n}\nreturn maxCust.id;"
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 2351,
+    "completion_tokens": 200,
+    "cost": 0.00039170000000000003
+  },
+  "duration_ms": 2046,
+  "record": {
+    "access": [
+      {
+        "call": 2,
+        "request": {
+          "path": "/customers"
+        }
+      }
+    ],
+    "exposure": [
+      {
+        "call": 1,
+        "channel": "search",
+        "text": "{\n  \"paths\": {\n    \"/customers\": {\n      \"get\": {\n        \"operationId\": \"listCustomers\",\n        \"summary\": \"고객 목록을 조회한다\",\n        \"parameters\": [\n          {\n            \"name\": \"tier\",\n            \"in\": \"query\",\n            \"required\": false,\n            \"schema\": {\n              \"type\": \"string\"\n            },\n            \"description\": \"회원 등급으로 거른다 (gold, silver, bronze)\"\n          },\n          {\n            \"name\": \"status\",\n            \"in\": \"query\",\n            \"required\": false,\n            \"schema\": {\n              \"type\": \"string\"\n            },\n            \"description\": \"배송 상태로 거른다\"\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"성공\"\n          },\n          \"404\": {\n            \"description\": \"없음\"\n          }\n        }\n      }\n    },\n    \"/customers/{id}\": {\n      \"get\": {\n        \"operationId\": \"getCustomer\",\n        \"summary\": \"고객 한 명을 조회한다\",\n        \"parameters\": [\n          {\n            \"name\": \"id\",\n            \"in\": \"path\",\n            \"required\": true,\n            \"schema\": {\n              \"type\": \"string\"\n            },\n            \"description\": \"고객 ID\"\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"성공\"\n          },\n          \"404\": {\n            \"description\": \"없음\"\n          }\n        }\n      }\n    }\n  }\n}"
+      },
+      {
+        "call": 2,
+        "channel": "return",
+        "text": "C008"
+      }
+    ]
+  },
+  "score": {
+    "needed": 0,
+    "accessed": 64,
+    "exposed": 0,
+    "needed_exposed": 0,
+    "unnecessary": 0,
+    "sensitive": 0,
+    "unnecessary_by_channel": {},
+    "sensitive_by_channel": {},
+    "channels_any": {},
+    "unnecessary_refs": [],
+    "sensitive_refs": []
+  }
+}
