@@ -3,6 +3,7 @@
 //   node scripts/run.js --model openai/gpt-oss-120b --env codemode --cond base --task T01 --reps 1
 //   node scripts/run.js --model openai/gpt-oss-120b                      (Code Mode 4조건 + MCP 2조건 × 과제 20 × 3회)
 //   node scripts/run.js --model openai/gpt-oss-120b --env mcp --reps 3
+//   node scripts/run.js --model anthropic/claude-haiku-5.5 --budget 2   (runs/ 전체 누적 비용이 $2에 닿으면 멈춤)
 //
 // 결과는 runs/<모델>/<환경>-<조건>/<과제>__<회차>.json 이다. 이미 있는 파일은 건너뛰므로 끊겨도 같은 명령으로 이어 돈다.
 // 키가 없거나 크레딧이 떨어지면(fatal) 결과를 남기지 않고 바로 멈춘다.
@@ -14,7 +15,7 @@ import { isCorrect, TASKS } from "../data/tasks.js";
 import { CODEMODE_CONDITIONS, createCodeMode } from "../envs/codemode.js";
 import { createMcp, MCP_CONDITIONS } from "../envs/mcp.js";
 import { createRecorder } from "../envs/recorder.js";
-import { compactRecord, modelKey, RUNS_DIR, runPath, scoreRun } from "./lib/runs.js";
+import { compactRecord, loadRuns, modelKey, RUNS_DIR, runPath, scoreRun } from "./lib/runs.js";
 
 const { values } = parseArgs({
   options: {
@@ -25,6 +26,9 @@ const { values } = parseArgs({
     reps: { type: "string", default: "3" },
     effort: { type: "string" },
     concurrency: { type: "string", default: "4" },
+    // 달러 단위 예산. runs/에 이미 쌓인 모든 모델의 비용까지 합쳐서 본다.
+    // 새 실행을 집기 전에만 확인하므로, 이미 돌고 있는 실행(최대 concurrency개)만큼은 넘칠 수 있다
+    budget: { type: "string" },
   },
 });
 
@@ -53,6 +57,10 @@ mkdirSync(rawDir, { recursive: true });
 let stopped = false;
 let done = 0;
 let cost = 0;
+const budget = values.budget ? Number(values.budget) : Infinity;
+const spentBefore = loadRuns().reduce((sum, r) => sum + (r.usage?.cost ?? 0), 0);
+if (values.budget) console.log(`예산 $${budget} 중 이미 쓴 비용 $${spentBefore.toFixed(3)}`);
+const overBudget = () => spentBefore + cost >= budget;
 
 async function runOne(job) {
   const task = TASKS.find((t) => t.id === job.task);
@@ -100,7 +108,14 @@ async function runOne(job) {
 // 작업 큐를 여러 일꾼이 나눠 가진다. 한 일꾼이 fatal을 만나면 나머지도 새 작업을 집지 않는다
 const queue = [...todo];
 const workers = Array.from({ length: Number(values.concurrency) }, async () => {
-  while (!stopped && queue.length) await runOne(queue.shift());
+  while (!stopped && queue.length) {
+    if (overBudget()) {
+      stopped = true;
+      console.error(`예산 상한 도달: 누적 $${(spentBefore + cost).toFixed(3)} / $${budget}`);
+      break;
+    }
+    await runOne(queue.shift());
+  }
 });
 await Promise.all(workers);
-console.log(stopped ? "중간에 멈췄다. 키나 크레딧을 확인하고 같은 명령으로 이어 돌린다." : `끝. 이번 실행 비용 $${cost.toFixed(3)}`);
+console.log(stopped ? `중간에 멈췄다. 남은 실행 ${queue.length}개. 이번 실행 비용 $${cost.toFixed(3)}` : `끝. 이번 실행 비용 $${cost.toFixed(3)}`);
