@@ -49,6 +49,21 @@
 | GPT-OSS 120B | Code Mode 스키마 | 84 | 6% | 94% | 0% | 5% |
 | GPT-OSS 120B | Code Mode 둘 다 | 9 | 0% | 100% | 0% | - |
 
+### 탐색 단계와 최종 반환으로 나눠 보기
+
+console과 마지막이 아닌 execute 호출의 return을 탐색으로, 마지막 execute 호출의 return을 최종 반환으로 묶었다.
+
+| 모델 | 조건 | 탐색 (console + 중간 return) | 최종 반환 (마지막 return) |
+| --- | --- | --- | --- |
+| Claude Haiku 5.5 | Code Mode 기본 | 29% | 71% |
+| Claude Haiku 5.5 | Code Mode 최소 반환 | 21% | 79% |
+| Claude Haiku 5.5 | Code Mode 스키마 | 4% | 96% |
+| Claude Haiku 5.5 | Code Mode 둘 다 | 0% | 100% |
+| GPT-OSS 120B | Code Mode 기본 | 70% | 30% |
+| GPT-OSS 120B | Code Mode 최소 반환 | 54% | 46% |
+| GPT-OSS 120B | Code Mode 스키마 | 19% | 81% |
+| GPT-OSS 120B | Code Mode 둘 다 | 0% | 100% |
+
 ## RQ3. 최소 반환 지시와 스키마 제공의 효과
 
 주효과는 해당 요인이 있는 두 조건의 평균에서 없는 두 조건의 평균을 뺀 값이다(과제당 불필요 노출 개수). 감소율은 기본 조건 대비다.

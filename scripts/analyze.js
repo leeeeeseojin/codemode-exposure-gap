@@ -7,6 +7,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { isCorrect, TASKS } from "../data/tasks.js";
 import { idealScore } from "../scorer/score.js";
+import { findValues, keyOfRef } from "../scorer/values.js";
 import { INDEX, loadRuns, scoreRun, TASK_BY_ID } from "./lib/runs.js";
 import { bootstrapCI, mean } from "./lib/stats.js";
 import { stackedBars } from "./lib/svg.js";
@@ -115,6 +116,42 @@ for (const model of models) {
 md.push("");
 
 // RQ3: 2×2 효과
+// 경로만으로는 "탐색 중에 샜는지, 답을 만들려고 넘겼는지"를 가를 수 없다. return도 구조를 보려는 중간 호출에서 나오기 때문이다.
+// 그래서 마지막 execute 호출의 return만 "최종 반환"으로 보고, console과 중간 return은 "탐색"으로 묶어 다시 센다.
+md.push("### 탐색 단계와 최종 반환으로 나눠 보기", "");
+md.push("console과 마지막이 아닌 execute 호출의 return을 탐색으로, 마지막 execute 호출의 return을 최종 반환으로 묶었다.", "");
+md.push("| 모델 | 조건 | 탐색 (console + 중간 return) | 최종 반환 (마지막 return) |");
+md.push("| --- | --- | --- | --- |");
+for (const model of models) {
+  summary.models[model].phases = {};
+  for (const c of CODEMODE) {
+    const rows = pick(model, c.key);
+    let explore = 0;
+    let final = 0;
+    for (const r of rows) {
+      const needed = new Set(TASK_BY_ID[r.task].needs.map((ref) => keyOfRef(INDEX, ref)));
+      const execCalls = r.tool_calls.map((t, i) => (t.name === "execute" ? i + 1 : 0)).filter(Boolean);
+      const lastExec = Math.max(0, ...execCalls);
+      const seen = new Set();
+      const ordered = [...r.record.exposure].sort((a, b) => a.call - b.call || (a.channel === "console" ? -1 : 1));
+      for (const e of ordered) {
+        if (e.channel !== "console" && e.channel !== "return") continue;
+        for (const k of findValues(INDEX, e.text)) {
+          if (needed.has(k) || seen.has(k)) continue;
+          seen.add(k);
+          if (e.channel === "return" && e.call === lastExec) final++;
+          else explore++;
+        }
+      }
+    }
+    const total = explore + final;
+    if (!total) continue;
+    summary.models[model].phases[c.key] = { explore: explore / total, final: final / total };
+    md.push(`| ${modelLabel(model)} | ${c.label} | ${pct(explore / total)} | ${pct(final / total)} |`);
+  }
+}
+md.push("");
+
 md.push("## RQ3. 최소 반환 지시와 스키마 제공의 효과", "");
 md.push("주효과는 해당 요인이 있는 두 조건의 평균에서 없는 두 조건의 평균을 뺀 값이다(과제당 불필요 노출 개수). 감소율은 기본 조건 대비다.", "");
 md.push("| 모델 | 기본 | 최소 반환 | 스키마 | 둘 다 | 최소 반환 주효과 [95%] | 스키마 주효과 [95%] | 둘 다 감소율 | 성공률 (기본 → 둘 다) |");
