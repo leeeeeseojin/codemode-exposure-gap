@@ -58,7 +58,8 @@ async function complete(body, log) {
     log({ type: "response", attempt, status, model: json.model, usage: json.usage, error: json.error, message: json.choices?.[0]?.message });
     if (status === 200 && json.choices?.[0]) return json;
 
-    const kind = classify(status);
+    // 200인데 답이 비어 있는 응답이 한 번 있었다(types 조건 GPT-OSS T20 #2). 상위 제공자의 일시 오류로 보고 다시 시도한다
+    const kind = status === 200 ? "retry" : classify(status);
     if (kind === "fatal") throw Object.assign(new Error(`HTTP ${status}: ${json.error?.message ?? ""}`), { fatal: true });
     if (kind === "error" || attempt >= MAX_ATTEMPTS) throw new Error(`HTTP ${status}: ${json.error?.message ?? ""}`);
     await sleep(5000 * attempt);
