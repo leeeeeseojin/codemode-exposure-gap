@@ -15,6 +15,15 @@ for (const path of PATHS) {
   });
 }
 
+test("types 조건의 구조는 peek이 돌려주는 원소 모양과 같고 개인정보가 없다", async () => {
+  const { structureTypes } = await import("../envs/codemode.js");
+  const text = structureTypes();
+  for (const path of ["/customers", "/contacts", "/mails"]) {
+    assert.ok(text.includes(JSON.stringify(shapeOf(handle({ path }).body).items[0])), path);
+  }
+  assert.deepEqual([...findValues(index, text)], []);
+});
+
 test("목록은 원소 하나의 모양으로 접고, 갈리는 타입은 합쳐 적는다", () => {
   const shape = shapeOf(handle({ path: "/customers" }).body);
   assert.equal(shape.count, "number");
