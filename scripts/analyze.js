@@ -18,6 +18,7 @@ const CONDITIONS = [
   { key: "codemode-schema", label: "Code Mode 스키마" },
   { key: "codemode-both", label: "Code Mode 둘 다" },
   { key: "codemode-peek", label: "Code Mode 구조 보기" },
+  { key: "codemode-types", label: "Code Mode 구조 미리 주기" },
   { key: "mcp-full", label: "MCP 전체 반환" },
   { key: "mcp-select", label: "MCP 필드 선택" },
 ];
@@ -215,8 +216,9 @@ md.push("");
 // 단건 조회는 ID를 주고 레코드 하나를 묻는 과제, 나머지는 목록을 거르거나 집계해야 하는 과제다
 const SINGLE_RECORD = new Set(["T01", "T02", "T05", "T06", "T07", "T13", "T15", "T17"]);
 md.push("### 과제 종류별 (단건 조회 8개 / 목록·집계 12개)", "");
-md.push("| 모델 | 과제 종류 | 기본 | 구조 보기 (peek) | 스키마 | peek을 쓴 실행 |");
-md.push("| --- | --- | --- | --- | --- | --- |");
+md.push("구조 미리 주기(types)는 peek과 똑같은 구조를 처음부터 execute 설명에 넣은 조건이다. 같은 내용을 언제 주느냐만 다르다.", "");
+md.push("| 모델 | 과제 종류 | 기본 | 구조 보기 (peek) | 구조 미리 주기 (types) | 스키마 | peek을 쓴 실행 |");
+md.push("| --- | --- | --- | --- | --- | --- | --- |");
 for (const model of models) {
   if (!pick(model, "codemode-peek").length) continue;
   summary.models[model].peek_by_kind = {};
@@ -225,8 +227,8 @@ for (const model of models) {
     const u = (rows) => mean(rows.map((r) => r.s.unnecessary));
     const peekRows = cell("codemode-peek");
     const usedRate = mean(peekRows.map((r) => (r.record.access.some((a) => a.request.peek) ? 1 : 0)));
-    summary.models[model].peek_by_kind[kind] = { base: u(cell("codemode-base")), peek: u(peekRows), schema: u(cell("codemode-schema")), used_rate: usedRate };
-    md.push(`| ${modelLabel(model)} | ${kind} | ${f1(u(cell("codemode-base")))} | ${f1(u(peekRows))} | ${f1(u(cell("codemode-schema")))} | ${pct(usedRate)} |`);
+    summary.models[model].peek_by_kind[kind] = { base: u(cell("codemode-base")), peek: u(peekRows), types: u(cell("codemode-types")), schema: u(cell("codemode-schema")), used_rate: usedRate };
+    md.push(`| ${modelLabel(model)} | ${kind} | ${f1(u(cell("codemode-base")))} | ${f1(u(peekRows))} | ${f1(u(cell("codemode-types")))} | ${f1(u(cell("codemode-schema")))} | ${pct(usedRate)} |`);
   }
 }
 md.push("");
